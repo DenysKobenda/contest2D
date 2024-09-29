@@ -15,10 +15,11 @@ body {
 header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     margin-bottom: 30px;
     padding: 10px;
+    padding-inline: 30px;
     background-color: #00796b;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -41,6 +42,12 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+h1 {
+    padding-left: 330px;
+    font-variant: all-petite-caps;
+    font-size: 35px;
+}
+
 h2 {
     font-size: 30px;
     font-variant: all-petite-caps;
@@ -49,6 +56,33 @@ h2 {
     color: #d84315;
     text-decoration: underline;
     font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-variant: all-petite-caps;
+}
+
+nav ul li {
+    margin: 0 5px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+nav ul li.selected a {
+    color: #ffccbc;
+}
+
+nav ul li a:hover {
+    color: #ffccbc;
 }
 
 .image-column {
@@ -112,7 +146,7 @@ figcaption {
     }
 
     .logo {
-        width: 120px;
+        width: 80px;
     }
 
     img {
@@ -126,5 +160,21 @@ figcaption {
     figure {
         padding: 10px;
         border-width: 2px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        font-size: 18px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    h1 {
+        padding-left: 0;
+        font-size: 25px;
+        text-align: center;
     }
 }
