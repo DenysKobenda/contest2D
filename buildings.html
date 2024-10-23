@@ -23,35 +23,51 @@
     <section class="static-images">
         <h2>Споруди</h2>
         <div class="image-column" id="image-container"></div>
+        <div id="tooltip" class="tooltip">Тут буде опис споруди</div> <!-- Контейнер для вікна -->
     </section>
 
-    <script>
-        const images = [
-            { src: 'assets/img/sadiba.png', caption: 'Садиба М.І.Пирогова' },
-            { src: 'assets/img/vezha_artinova.png', caption: 'Вежа Артинова' },
-            { src: 'assets/img/televiziyna_vezha.png', caption: 'Вінницька телевежа' },
-            { src: 'assets/img/avtovokzal.png', caption: 'Східний автовокзал' },
-            { src: 'assets/img/arka.png', caption: 'Вінницька арка' },
-            { src: 'assets/img/roshen.png', caption: 'Фабрика ROSHEN' },
-            { src: 'assets/img/lvovich.png', caption: 'Особняк Львовича' }
-        ];
+<script>
+const images = [
+    { src: 'assets/img/sadiba.png', caption: 'Садиба М.І.Пирогова', description: 'У південно-західній частині Вінниці є музей-садиба Миколи Івановича Пирогова — видатного лікаря і вченого, творця воєнно-польової хірургії, педагога і громадського діяча. Чверть століття М. Пирогов жив і працював в Україні. У 1861 р., подавши у відставку з посади попечителя Київського навчального округу, Микола Іванович оселився в садибі Вишня, де пройшли останні двадцять років його життя. Тут він продовжував активну наукову і громадську діяльність, зокрема створив першу на Поділлі сільську лікарню та збудував аптеку, де за рецептом з позначкою «для бідного» ліки відпускалися безкоштовно.' },
+    { src: 'assets/img/vezha_artinova.png', caption: 'Вежа Артинова', description: 'Понад сторічна вежа Артинова — справжня перлина в намисті принад Вінниці.За різних часів вона виконувала різні функції: водонапірної вежі, пожежної каланчі, навіть квартирного будинку. Нині тут розташований Музей пам’яті воїнів Вінниччини. Як і сто років тому годинник на Вежі сповіщає містянам точний час. Особливо привабливою стає вежа з настанням сутінок, коли запалює свої ошатні вогні.' },
+    { src: 'assets/img/televiziyna_vezha.png', caption: 'Вінницька телевежа', description: 'Вінницька радіотелевізійна вежа – це металева труба, діаметром близько двох метрів зі спеціальної сталі. Всередині труби знаходиться ліфт, який робить вісім зупинок і піднімається на висоту 309 метрів.' },
+    { src: 'assets/img/avtovokzal.png', caption: 'Східний автовокзал', description: 'Автовокзал “Вінниця-2“ – автовокзал Вінниці розташований по вул. Хмельницьке шосе 107. З автовокзалу відправляються регулярні автобусні рейси за кордон та по Україні.' },
+    { src: 'assets/img/arka.png', caption: 'Вінницька арка', description: 'Вінницька арка — один із символів міста Вінниці. Вона веде до центрального парку ім. Леонтовича та розташована на площі Калічанській, що знаходиться у центрі міста.' },
+    { src: 'assets/img/roshen.png', caption: 'Фабрика ROSHEN', description: 'На сьогоднішній день, Вінницька кондитерська фабрика входить до п\'ятірки найбільших кондитерських підприємств України, асортимент фабрики налічує понад 100 найменувань кондитерських виробів, загальним обсягом близько 100 тис. тонн на рік.' },
+    { src: 'assets/img/lvovich.png', caption: 'Особняк Львовича', description: 'Збудована для одного з найбагатших вінничан свого часу, садиба на сучасній вулиці Петлюри використовувалась як приміщення для Міністерства пошт і телеграфів УНР. А трохи пізніше в ній протягом короткого періоду часу працював Симон Петлюра.' }
+];
 
-        const imageContainer = document.getElementById('image-container');
+const imageContainer = document.getElementById('image-container');
+const tooltip = document.getElementById('tooltip');
 
-        images.forEach(image => {
-            const figure = document.createElement('figure');
+images.forEach(image => {
+    const figure = document.createElement('figure');
 
-            const img = document.createElement('img');
-            img.src = image.src;
-            img.alt = image.caption;
+    const img = document.createElement('img');
+    img.src = image.src;
+    img.alt = image.caption;
 
-            const figcaption = document.createElement('figcaption');
-            figcaption.textContent = image.caption;
+    const figcaption = document.createElement('figcaption');
+    figcaption.textContent = image.caption;
 
-            figure.appendChild(img);
-            figure.appendChild(figcaption);
-            imageContainer.appendChild(figure);
-        });
-    </script>
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+    imageContainer.appendChild(figure);
+
+    figure.addEventListener('mouseenter', () => {
+        tooltip.textContent = image.description;
+        tooltip.style.display = 'block';
+    });
+
+    figure.addEventListener('mousemove', (event) => {
+        tooltip.style.left = `${event.pageX + 15}px`;
+        tooltip.style.top = `${event.pageY + 15}px`;
+    });
+
+    figure.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+    });
+});
+</script>
 </body>
 </html>
