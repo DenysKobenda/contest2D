@@ -23,31 +23,47 @@
     <section class="static-images">
         <h2>Пам'ятники</h2>
         <div class="image-column" id="image-container"></div>
+        <div id="tooltip" class="tooltip">Тут буде опис споруди</div>
     </section>
 
-    <script>
-        const images = [
-            { src: 'assets/img/mig_15.png', caption: 'Пам`ятник МіГ-15' },
-            { src: 'assets/img/liverpool.png', caption: 'Площа Ліверпуль' },
-            { src: 'assets/img/stomatolog.png', caption: "Пам'ятник стоматологам" }
-        ];
+<script>
+ const images = [
+    { src: 'assets/img/mig_15.png', caption: "Пам'ятник МіГ-15", description: 'Пам\'ятник льотчикам-визволителям перед проспектом Космонавтів. Пам\'ятник з літаком відкрили в 1969 році, на урочистостях був льотчик, космонавт Георгій Береговий. Саме його ескадрилья звільняла місто від німецьких загарбників у 1944 році.' },
+    { src: 'assets/img/liverpool.png', caption: 'Площа Ліверпуль', description: 'На День міста Вінниці у 2017 році відкрили оновлену площу з інсталяцією, присвячену легендарній «чудовій четвірці» – британському гурту The Beatles. Відтоді Джон Леннон, Пол Маккартні, Джордж Харрісон та Рінго Старр зустрічають вінничан та туристів у центрі міста на фоні свого знаменитого жовтого підводного човна.' },
+    { src: 'assets/img/stomatolog.png', caption: "Пам'ятник стоматологам", description: 'На перехресті вулиць Архітектора Артинова і вулиці Грушевського розміщений пам\'ятник стоматологу. Це спільне виробництво колективу стоматологічної клініки - лікарі розробили проект і покликали слюсаря, який зробив цікаву скульптуру.' },
+];
 
-        const imageContainer = document.getElementById('image-container');
+const imageContainer = document.getElementById('image-container');
+const tooltip = document.getElementById('tooltip');
 
-        images.forEach(image => {
-            const figure = document.createElement('figure');
+images.forEach(image => {
+    const figure = document.createElement('figure');
 
-            const img = document.createElement('img');
-            img.src = image.src;
-            img.alt = image.caption;
+    const img = document.createElement('img');
+    img.src = image.src;
+    img.alt = image.caption;
 
-            const figcaption = document.createElement('figcaption');
-            figcaption.textContent = image.caption;
+    const figcaption = document.createElement('figcaption');
+    figcaption.textContent = image.caption;
 
-            figure.appendChild(img);
-            figure.appendChild(figcaption);
-            imageContainer.appendChild(figure);
-        });
-    </script>
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+    imageContainer.appendChild(figure);
+
+    figure.addEventListener('mouseenter', () => {
+        tooltip.textContent = image.description;
+        tooltip.style.display = 'block';
+    });
+
+    figure.addEventListener('mousemove', (event) => {
+        tooltip.style.left = `${event.pageX + 15}px`;
+        tooltip.style.top = `${event.pageY + 15}px`;
+    });
+
+    figure.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+    });
+});
+</script>
 </body>
 </html>
