@@ -25,6 +25,20 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 30px;
+    padding: 10px;
+    padding-inline: 30px;
+    background-color: #00796b;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .logo {
     width: 100px;
     border: 3px solid #fff;
@@ -178,3 +192,22 @@ figcaption {
         text-align: center;
     }
 }
+
+.tooltip {
+    position: absolute;
+    display: none;
+    background-color: #ffccbc;
+    padding: 10px;
+    border: 2px solid #ff5722;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    color: #333;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+figure {
+    position: relative;
+}
+
