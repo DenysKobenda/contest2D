@@ -22,7 +22,32 @@
 
     <section class="gif-animation">
         <h2>GIF Анімація</h2>
-        <img src="assets/img/prapor.gif" alt="GIF Анімація" class="gif">
+        <img src="assets/img/prapor.gif" alt="GIF Анімація" class="gif" data-tooltip="Синьо-жовтий символ свободи і незалежності на Вінниччині розміщений на флагштоці, висота прапорової щогли складає 50 метрів. Полотнище прапора розміром 150 м2 та вагою 500 кілограм. Щогла виконана із оцинкованої сталі та важить майже 7 тонн."/>
+        <div id="tooltip" class="tooltip"></div>
     </section>
+
+    <script>
+        const gifElement = document.querySelector('.gif');
+        const tooltip = document.getElementById('tooltip');
+
+        gifElement.addEventListener('mouseenter', (e) => {
+            const tooltipText = e.target.getAttribute('data-tooltip');
+            tooltip.textContent = tooltipText;
+            tooltip.style.display = 'block';
+            tooltip.style.left = `${e.pageX + 10}px`;
+            tooltip.style.top = `${e.pageY + 10}px`;
+        });
+
+        gifElement.addEventListener('mousemove', (e) => {
+            tooltip.style.left = `${e.pageX + 10}px`;
+            tooltip.style.top = `${e.pageY + 10}px`;
+        });
+
+        gifElement.addEventListener('mouseleave', () => {
+            tooltip.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
+
+
